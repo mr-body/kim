@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://cd6sqt7jexau2"]
+
+[ext_resource type="Texture2D" uid="uid://bt4my0ka8ga0y" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Idle (32 x 32).png" id="1_6x1fd"]
+[ext_resource type="Script" path="res://scrips/player.gd" id="1_yqs8q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm122"]
+atlas = ExtResource("1_6x1fd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44f3b"]
+atlas = ExtResource("1_6x1fd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ymf8h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tm122")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44f3b")
+}],
+"loop": true,
+"name": &"Adle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_coppe"]
+radius = 11.0
+height = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28rxp"]
+size = Vector2(952, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s3fk"]
+size = Vector2(399.5, 15)
+
+[node name="world-01" type="Node2D"]
+
+[node name="player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_yqs8q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+texture_filter = 1
+position = Vector2(103, 141.75)
+scale = Vector2(1.375, 1.29688)
+sprite_frames = SubResource("SpriteFrames_ymf8h")
+animation = &"Adle"
+autoplay = "Adle"
+frame_progress = 0.986114
+speed_scale = 0.6
+
+[node name="colosor" type="CollisionShape2D" parent="player"]
+position = Vector2(103, 153)
+shape = SubResource("CapsuleShape2D_coppe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(165, 314.25)
+shape = SubResource("RectangleShape2D_28rxp")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(436.75, 233)
+shape = SubResource("RectangleShape2D_6s3fk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-23, 169)
+shape = SubResource("RectangleShape2D_6s3fk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(433, 87)
+shape = SubResource("RectangleShape2D_6s3fk")
